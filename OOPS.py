@@ -341,7 +341,7 @@ print(house1.price)
 
 
 '''
-
+'''
 #Abstract based class
 #if you declarea  class as an abstract class,every  child class tha inherits
 #that bse class should implement all the abstract methods from that base class
@@ -354,6 +354,12 @@ class Animal(ABC):
     def feed(self,fav_food): #define the abstract method by usin gthe dcorator @abstractmethods
         pass #will write the code later
 
+    @property #to define an abstract variable, we musr use @poperty and @abstractmethod
+    @abstractmethod    #that is if we use prooeryt and abstract method, it acts as a variable,not a method
+    def favorite_food(self): # we can only return a value or print a calue, we cannot do any other function in side the property ,asntract
+        pass
+
+
     def sleep(self):
         print('Sleeping')
 
@@ -361,13 +367,22 @@ class Animal(ABC):
 #implement the @abstractmethos decorated function
 
 class lion(Animal):
+    @property
+    def favorite_food(self):
+        return 'Rabbit meat'
 
     def feed(self,fav_food,time): #this method should be defined (IMplemented) as mandatory
         print(f'Feedign the lion with {fav_food} at {time}.')
+
+    
     def roar(self):
         print('Roaring..')
 
 class panda(Animal):
+    @property
+    def favorite_food(self):
+        return 'Bamboo twigs'
+
     def feed(self,fav_food,time):
         print(f'Feeding panda with {fav_food} at {time}.')
 
@@ -386,6 +401,364 @@ kungfupanda=panda()
 
 simba.feed('Mutton','9:00 AM')
 kungfupanda.feed('Bamboo leaves','10:00 AM')
+
+'''
+'''
+#ASSIGNMENT ABSTRACT CLASS
+from abc import ABC , abstractmethod #import the ABC class and the decorator
+
+class calculate(ABC):
+    
+    def num1()
+
+    @property
+    @abstractmethod 
+    def performcalculation(self,num1,num2):
+        pass
+
+class sum(calculate):
+    @property
+    def performcalculation(self,num1,num2,oper):
+        return self.num1+self.num2
+
+class diff(calculate):
+    @property
+    def performcalculation(self,num1,num2,oper):
+        return self.num1-self.num2
+
+class divide(calculate):
+    @property
+    def performcalculation(self,num1,num2,oper):
+        return self.num1/self.num2
+        
+class product(calculate):
+    @property
+    def performcalculation(self,num1,num2,oper):
+        return self.num1*self.num2
+
+
+
+num1=int(input('\nEnter the number 1:'))
+num2=int(input('\nEnter the number 2:'))
+oper=input('\nENter the operation:')
+
+
+calculation1=calculate(num1,num2,oper)
+
+
+print(calculation1.sum(num1,num2))
+
+'''
+'''
+#HIGHER ORDER FUNCTION
+
+#1.map() - can apply a function to each and every element of  an iterable
+
+#definin a simple function to fin d square of a number
+
+def find_square(mynum):
+    return mynum*mynum
+
+
+#define the map function so that we can fine the square of each and every
+#element in a tuple and rerturn back the processed tuple
+#syntax: map(function,iterable)
+
+my_tuple=(1,2,3,4)
+result_map_obj=map(find_square,my_tuple)
+print(tuple(result_map_obj))
+
+#implementing map() fn with lambda functions
+
+result_map_obj=map(lambda num: num*num , my_tuple)
+
+print(tuple(result_map_obj))
+
+
+#2.filter function
+#that return true on condition
+def find_square(mynum):
+    return mynum*mynum
+
+
+
+
+
+#3.Reduced function
+#fn to apply a fn to the iterable and reduce 
+def add_numbers(num1,num2):
+    return num1+num2
+
+from functools import reduce
+my_tuple=(1,2,3,4)
+result_map_obj=reduce(add_numbers,my_tuple)
+print(result_map_obj)
+
+#implementing map() fn with lambda functions
+
+result_map_obj=reduce(lambda num1,num2: num1+num2 , my_tuple)
+
+print((result_map_obj))
+
+'''
+
+#Execption handling in python using try execpt else finally statementsa
+#here we are trying to open a non existing file and will handle the exeption
+
+try:
+    file=open('somefile.txt')
+    try:
+        file.write('some content')
+    except:
+        print('Writing cannot be completed')
+    finally:
+        file.close()
+except:
+    print('The file cannot be opened')
+finally:
+    print('Lets move on witht he program')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
